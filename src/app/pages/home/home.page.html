@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Home
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="map" #map></div>
+
+  <ion-fab *ngIf="!seeDestination" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="loadMap()">
+          <ion-icon name="location-outline"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
+
+
+  <ion-searchbar class="search" [(ngModel)]="search" placeholder="Search" (ionChange)="onSearch($event)" [hidden]="seeDestination" [debounce]="250"></ion-searchbar>
+
+  <ion-list class="ion-margin-horizontal" [hidden]="!search.length">
+      <ion-item (click)="calcRoute(result)" *ngFor="let result of searchResults">
+          {{result.description}}
+      </ion-item>
+  </ion-list>
+
+  <ion-button id="backbutton" class="ion-margin-top" color="dark" (click)="back()" fill="clear" size="small" [hidden]="!seeDestination">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-button>
+
+
+  <!-- 
+  <ion-searchbar class="searchdos" [(ngModel)]="searchdos" placeholder="Search" (ionChange)="onSearchDos($event)" [hidden]="seeDestination" [debounce]="250"></ion-searchbar>
+
+  <ion-list class="ion-margin-horizontal" [hidden]="!searchdos.length">
+      <ion-item (click)="calcRoute(result)" *ngFor="let result of searchResultsDos">
+          {{result.description}}
+      </ion-item>
+  </ion-list>
+-->
+
+  <div class="request-car ion-padding ion-text-center" [hidden]="!seeDestination">
+      <h4 class="ion-no-margin">
+          Travel
+      </h4>
+      <ion-grid class="ion-margin-vertical">
+          <ion-row>
+              From: <b id="etiqueta"> {{ address1}}   </b>
+          </ion-row>
+          <br>
+          <ion-row>
+              To:<b id="etiqueta"> {{ address2}}   </b>
+          </ion-row>
+          <br>
+          <ion-row>
+
+              <ion-col size="4">
+                  Time: {{ tiempo}}
+              </ion-col>
+              <ion-col size="4">
+                  Distance: {{ distancia }}
+              </ion-col>
+              <ion-col size="4">
+                  Total: {{ total}}
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+
+      <ion-button color="dark" expand="block" (click)="confirmar_viaje()">
+          Indicaciones
+      </ion-button>
+  </div>
+
+
+</ion-content>

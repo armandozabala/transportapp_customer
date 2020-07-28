@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "transportapp-1529717660459": {
+      "hosting": {
+        "app": [
+          "transportapp-1529717660459"
+        ]
+      }
+    }
+  }
+}
