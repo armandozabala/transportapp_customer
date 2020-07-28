@@ -1,5 +1,7 @@
 {
   "name": "transportapp_customer",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

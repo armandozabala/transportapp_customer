@@ -86,7 +86,11 @@ longitude:any;
   };
 
    //, private launchNavigator: LaunchNavigator,  
-   constructor(public loadingController: LoadingController, private geolocation: Geolocation, private ngZone: NgZone, private launchNavigator: LaunchNavigator, private nativeGeocoder: NativeGeocoder) {
+   constructor(public loadingController: LoadingController, 
+                private geolocation: Geolocation, 
+                private ngZone: NgZone, 
+                private launchNavigator: LaunchNavigator, 
+                private nativeGeocoder: NativeGeocoder) {
      this.googleAutocomplete =  new google.maps.places.AutocompleteService();
      this.directionsService  = new google.maps.DirectionsService();
  
@@ -121,7 +125,7 @@ longitude:any;
       this.originMarker = new google.maps.LatLng( this.latitude, this.longitude );
     
       //this.viewRoute(this.originMarker, this.destination);
-      this.myLatLng = {lat: 4.6775397000000005 , lng: -74.6775397000000005};
+      this.myLatLng = {lat: this.latitude , lng: this.longitude};
 
       this.originIndicator = [ this.latitude, this.longitude];
 
@@ -142,6 +146,7 @@ longitude:any;
       loading.dismiss();
 
        this.makeMarker( this.originMarker, this.icons.start, ' ', 0);
+
 
        /*this.nativeGeocoder.reverseGeocode(this.myLatLng.lat, this.myLatLng.lng, this.options).then(result => {
 
@@ -293,6 +298,8 @@ async viewRoute(origen, destino){
       
 
 }
+
+
 
     
  async calcRoute(item){
