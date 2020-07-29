@@ -3,6 +3,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 declare var google;
 
 @Component({
@@ -90,6 +91,7 @@ longitude:any;
                 private geolocation: Geolocation, 
                 private ngZone: NgZone, 
                 private launchNavigator: LaunchNavigator, 
+                private router: Router,
                 private nativeGeocoder: NativeGeocoder) {
      this.googleAutocomplete =  new google.maps.places.AutocompleteService();
      this.directionsService  = new google.maps.DirectionsService();
@@ -136,7 +138,7 @@ longitude:any;
            zoom: 17,
            center: this.myLatLng, // 
            mapTypeId: google.maps.MapTypeId.ROADMAP,
-           styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 10 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 32 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }],
+           styles: [],
            scaleControl: true,
       });
 
@@ -262,6 +264,8 @@ async viewRoute(origen, destino){
               this.address1 =  r.start_address;
               this.address2 = r.end_address;
 
+            
+
               const points = new Array<any>();
               const routes = response.routes[0].overview_path;
       
@@ -288,7 +292,7 @@ async viewRoute(origen, destino){
             this.map.fitBounds(response.routes[0].bounds);
             this.map.setZoom(14);
             this.directionsDisplay.setDirections(response);
-           
+            this.seeDestination = true;
            
         
       }else{
@@ -306,38 +310,35 @@ async viewRoute(origen, destino){
 
     this.search = '';
 
-    this.seeDestination = true;
+    
 
     this.map.panBy(0,120);
    
- 
-    let result = await this.nativeGeocoder.forwardGeocode(item.description, this.options);
+    //let result = await this.nativeGeocoder.forwardGeocode(item.description, this.options);
+
+    let geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode( {address:item.description}, (results, status) => 
+    {
+      if (status == google.maps.GeocoderStatus.OK) 
+      {
+  
+
+        this.dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng() );
+
+        this.viewRoute(this.originMarker, this.dest);
+    
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+    }
+    });
+
+    /*  this.destinyIndicator = [result[0].latitude, result[0].longitude];
+
+     */
 
 
 
-      this.destinyIndicator = [result[0].latitude, result[0].longitude];
-
-      this.dest = new google.maps.LatLng( result[0].latitude, result[0].longitude );
-
-      this.viewRoute(this.originMarker, this.dest);
-
-
-
-    //  .then((result: NativeGeocoderResult[]) => {  alert(JSON.stringify(result[0])) })
-    //  .catch((error: any) => alert(error));
-
-
-    /*this.geocoder.geocode({ 'address': item.description }, function(results, status){
-
-          if(status == 'OK'){
-                alert(results[0]);
-                
-          }else{
-                console.log('Geocode was not successful for the following reason: ' + status);
-          }
-
-    });*/
-    /*this.viewRoute(this.originMarker, this.destination);*/
   }
 
   back(){
@@ -420,13 +421,15 @@ async viewRoute(origen, destino){
 
   confirmar_viaje(){
 
-    this.launchNavigator.navigate(this.destinyIndicator, {
+    this.router.navigate(['/login'])
+
+    /*this.launchNavigator.navigate(this.destinyIndicator, {
       start: `${this.originIndicator[0]}, ${this.originIndicator[1]}`
     })
     .then(
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
-    );
+    );*/
 
   }
  
