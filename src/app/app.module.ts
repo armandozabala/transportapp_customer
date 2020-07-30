@@ -22,6 +22,7 @@ import { HttpClientModule } from  '@angular/common/http';
 
 import { Network } from '@ionic-native/network/ngx';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -43,6 +44,7 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
     Geolocation,
     LaunchNavigator,
     NativeGeocoder,
+    BackgroundGeolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

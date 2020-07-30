@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import { GeoCollectionReference, GeoFirestore, GeoQuery, GeoQuerySnapshot } from 'geofirestore';
+import { GeoCollectionReference, GeoFirestore, GeoQuery } from 'geofirestore';
 import * as firebase from 'firebase/app';
 
 @Injectable({

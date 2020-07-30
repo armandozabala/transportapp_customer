@@ -4,7 +4,6 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
@@ -32,7 +31,6 @@ export class BackgroundtaskService {
               public db: AngularFirestore, 
               public afs: FirestoreService,
               private geolocation: Geolocation,
-              private localNotifications: LocalNotifications,
               private backgroundGeolocation: BackgroundGeolocation,
               public toastController: ToastController) {
 

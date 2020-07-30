@@ -1,13 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
 import { MenuController, Platform, ToastController } from '@ionic/angular';
-import { DatabaseService } from 'src/app/services/database.service';
 import { Network } from '@ionic-native/network/ngx';
 import { Router } from '@angular/router';
 import swal from'sweetalert2';
 import { BackgroundtaskService } from 'src/app/services/backgroundtask.service';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

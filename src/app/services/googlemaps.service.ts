@@ -1,6 +1,5 @@
 import { Injectable, ViewChild, ElementRef } from '@angular/core';
 import { compileNgModule } from '@angular/compiler';
-import { GeoQuerySnapshot } from 'geofirestore';
 import { GeofirestoreService } from './geofirestore.service';
 import { Observable } from 'rxjs';
 
@@ -129,7 +128,7 @@ export class GooglemapsService {
 
   setPoints(event, map){
 
-    this.geofirestore.geoQuery(event.latLng).then((value: GeoQuerySnapshot) => {
+    this.geofirestore.geoQuery(event.latLng).then((value: any) => {
 
       
       value.docs.forEach(element => {
