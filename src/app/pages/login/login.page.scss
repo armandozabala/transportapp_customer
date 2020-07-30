@@ -1,0 +1,114 @@
+.background {
+    --background: url(../../../assets/imgs/background.jpg) 0 0/100% 100% no-repeat;
+    
+}
+
+.card .container {
+   
+    padding: 2px 16px;
+    opacity: 1 !important;
+  }
+
+.card .ion-text-center{
+    opacity: 1 !important;
+}
+
+.card {
+    bottom: 150px;
+    top: 180px;
+    left: 10px;
+    right: 10px;
+    position: absolute;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 95%;
+    border-radius: 5px;
+    background-color:rgb(255, 255, 255);
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    height: 250px;
+    opacity: 0.9 !important;
+  }
+
+  .card .green-button{
+      z-index: 999;
+      width: 100%;
+      opacity: 1 !important;
+  }
+
+  .textico{
+      color: black;
+      font-weight: bold;
+  }
+.gray-button{
+    width: 90%;
+    left: 10px;
+    right: 10px;
+    
+}
+
+.card-center {
+    top: 25%;
+    width: 90%; // adjust width on your ion-card suitable on your screen
+    display: block;
+    margin: 0 auto;
+}
+
+.login-container {
+    flex: 2;
+    z-index:999;
+}
+
+.scroll-content {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+ion-card.card {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+a,
+p,
+ion-card-header.card-header {
+    color: #fff;
+}
+
+.list>.item-block:first-child {
+    border: medium none;
+}
+
+.icon {
+    padding-right: 10px;
+}
+
+.item {
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border: medium none;
+    .text-input {
+        color: #fff;
+    }
+    *:-moz-placeholder {
+        color: #fff!important;
+    }
+    *:-ms-input-placeholder {
+        color: #fff!important;
+    }
+    *::-webkit-input-placeholder {
+        color: #fff!important;
+    }
+    input::moz-placeholder {
+        color: #fff!important;
+    }
+    input:-moz-placeholder {
+        color: #fff!important;
+    }
+}

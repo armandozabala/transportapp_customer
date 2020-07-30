@@ -7,7 +7,7 @@
  .header {
      flex: 1;
      .title {
-         padding-top: 120px;
+         padding-top: 100px;
          img {
              width: 100px;
          }
@@ -54,7 +54,7 @@
      overflow: hidden;
 
      &.active {
-         height: calc(100% - 190px);
+         height: calc(100% - 170px);
      }
      
      .toggle-text {
@@ -72,8 +72,8 @@
 }
 
 .gradient-1 {
- --background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgba(97,135,157,1) 100%);
- background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgba(97,135,157,1) 100%);
+ --background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(69, 78, 83) 100%);
+ background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(62, 78, 87) 100%);
 }
 .gradient-2 {
 // --background: linear-gradient(180deg, #b2bec3 0%, #0984e3 80%);
