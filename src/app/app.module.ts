@@ -20,6 +20,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from  '@angular/common/http';
 
+import { Network } from '@ionic-native/network/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +37,8 @@ import { HttpClientModule } from  '@angular/common/http';
   ],
   providers: [
     StatusBar,
+    Network,
+    BackgroundMode,
     SplashScreen,
     Geolocation,
     LaunchNavigator,
