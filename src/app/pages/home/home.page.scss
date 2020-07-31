@@ -2,7 +2,12 @@ ion-searchbar {
  --background: #fff;
  display: block;
  z-index: 999;
+ width: 97%;
  position: absolute;
+  right: 5px;
+  left: 5px;
+  top: 10px;
+
 }
 
 .ion-margin-vertical{

@@ -50,7 +50,8 @@
      width: 100%;
      padding-top: 10px;
      transition: all 1s;
-
+     display: flex;
+     flex-direction: column;
      overflow: hidden;
 
      &.active {
@@ -63,7 +64,12 @@
          margin-bottom: 60px;
      }
 
+     ion-button{
+         max-width: 320px;
+     }
+
      .form {
+         margin-top: -50px;
          ion-item {
              --background: #464646;
          }
@@ -72,8 +78,8 @@
 }
 
 .gradient-1 {
- --background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(69, 78, 83) 100%);
- background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(62, 78, 87) 100%);
+ --background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(48, 63, 71) 100%);
+ background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(69, 117, 145) 100%);
 }
 .gradient-2 {
 // --background: linear-gradient(180deg, #b2bec3 0%, #0984e3 80%);
@@ -87,6 +93,11 @@
  color: #FFF;
 }
 .gray-button {
+    font-weight: bold;
+ --background:  #00b894;
+ color: #FFF;
+}
+.register-button {
     font-weight: bold;
  --background:  #00b894;
  color: #FFF;

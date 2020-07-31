@@ -21,9 +21,9 @@
 
 
 
-  <ion-searchbar class="search" [(ngModel)]="search" placeholder="Destino del transporte" (ionChange)="onSearch($event)" [hidden]="seeDestination" [debounce]="250"></ion-searchbar>
+  <ion-searchbar  [(ngModel)]="search" placeholder="Destino del transporte" (ionChange)="onSearch($event)" [hidden]="seeDestination" [debounce]="250"></ion-searchbar>
 
-  <ion-list class="ion-margin-horizontal" [hidden]="!search.length">
+  <ion-list style="width: 92%; left: 13px; right: 20px; position: absolute;" [hidden]="!search.length">
       <ion-item (click)="calcRoute(result)" *ngFor="let result of searchResults">
           {{result.description}}
       </ion-item>
@@ -46,8 +46,8 @@
 <div id="over_map_bottom" [hidden]="!seeDestination">
 
     <div class="container_data">
-        <p>  Distance:  <b>  {{ distancia }} </b>  </p>
-        <p>  Aproximate Time: <b> {{ tiempo}}  </b>  </p>
+        <p>  Distance:  <b>  {{ distance }} </b>  </p>
+        <p>  Aproximate Time: <b> {{ time}}  </b>  </p>
         <p>  Cost:  <b> {{ total}} $  </b>   </p>
         
         <ion-button color="dark" expand="block" (click)="confirmar_viaje()">

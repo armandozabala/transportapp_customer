@@ -80,4 +80,25 @@ export class FirestoreService {
       }));
   }
 
+  createUserForm(user: any) {
+    return this.db.collection("users").add(user);
+  }
+
+  createUserUID(user: any) {
+    return this.db.collection("users").doc(user.id).set(user);
+  }
+
+  createClienteUID(user: any) {
+    return this.db.collection("client").doc(user.id).set(user);
+  }
+
+  getClienteUID(uid: string) {
+    return this.db.collection("client", ref=> ref.where('id',"==",uid)).valueChanges().pipe(
+      map((changes:any) => {
+        console.log("SERVICES", changes[0]);
+        //this.saveStorage(changes[0].id, changes[0]);
+        return true;
+      }));
+  }
+
 }

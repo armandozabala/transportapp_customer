@@ -3,7 +3,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 declare var google;
 
 @Component({
@@ -42,6 +42,11 @@ export class HomePage implements OnInit {
 
    address1:any;
    address2:any;
+
+   lat_ori; any;
+   lng_ori:any;
+   lat_des:any;
+   lng_des:any;
    
    icons = {
     start: new google.maps.MarkerImage(
@@ -71,8 +76,8 @@ longitude:any;
    markers = [];
    start_address: any;
    end_address: any;
-   distancia: any;
-   tiempo: any;
+   distance: any;
+   time: any;
    total: number;
 
    options: NativeGeocoderOptions = {
@@ -104,6 +109,8 @@ longitude:any;
 
    ngOnInit() {
       this.loadMap();
+
+      localStorage.setItem('dataTravel', '');
    }
 
 
@@ -244,13 +251,13 @@ async viewRoute(origen, destino){
               var route = response.routes[0];
               var r = response.routes[0].legs[0];
                
-              //console.log(r);
+              console.log(r);
 
               this.start_address = r.start_address;
               this.end_address = r.end_address;
           
-              this.distancia = r.distance.text;
-              this.tiempo = r.duration.text;
+              this.distance = r.distance.text;
+              this.time = r.duration.text;
              
               let costo_viaje = 1000;
               let calculo= parseFloat(r.distance.text);
@@ -264,8 +271,14 @@ async viewRoute(origen, destino){
               this.address1 =  r.start_address;
               this.address2 = r.end_address;
 
-            
 
+              this.lat_ori = r.start_location.lat();
+              this.lng_ori = r.start_location.lng();
+        
+              this.lat_des = r.end_location.lat();
+              this.lng_des = r.end_location.lng();
+
+            
               const points = new Array<any>();
               const routes = response.routes[0].overview_path;
       
@@ -421,7 +434,35 @@ async viewRoute(origen, destino){
 
   confirmar_viaje(){
 
-    this.router.navigate(['/login'])
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          distance: this.distance,
+          time: this.time,
+          total: this.total,
+          address1: this.address1,
+          address2: this.address2,
+          lat_ori: this.lat_ori,
+          lng_ori: this.lng_ori,
+          lat_des: this.lat_des,
+          lng_des: this.lng_des,
+      }  
+    }
+
+    let objData = { 
+      distance: this.distance,
+      time: this.time,
+      total: this.total,
+      address1: this.address1,
+      address2: this.address2,
+      lat_ori: this.lat_ori,
+      lng_ori: this.lng_ori,
+      lat_des: this.lat_des,
+      lng_des: this.lng_des
+    }
+
+    localStorage.setItem('dataTravel', JSON.stringify(objData));
+
+    this.router.navigate(['/login'], navigationExtras)
 
     /*this.launchNavigator.navigate(this.destinyIndicator, {
       start: `${this.originIndicator[0]}, ${this.originIndicator[1]}`

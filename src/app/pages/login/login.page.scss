@@ -28,15 +28,21 @@
     flex-direction: column;  /* make main axis vertical */
     justify-content: center; /* center items vertically, in this case */
     align-items: center;     /* center items horizontally, in this case */
-    height: 250px;
+    height: 300px;
     opacity: 0.9 !important;
   }
 
-  .card .green-button{
+.green-button{
       z-index: 999;
       width: 100%;
       opacity: 1 !important;
   }
+
+  .register-button{
+    z-index: 999;
+    width: 100%;
+    opacity: 1 !important;
+}
 
   .textico{
       color: black;
@@ -59,6 +65,15 @@
 .login-container {
     flex: 2;
     z-index:999;
+}
+
+
+.register-container {
+    max-width: 320px;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
 }
 
 .scroll-content {
