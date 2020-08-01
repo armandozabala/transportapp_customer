@@ -101,22 +101,32 @@ export class LoginPage implements OnInit {
             
                 this.user  = JSON.parse(localStorage.getItem('users'));
                 this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+
+                if(this.dataOrder == null){
+
+                    this.router.navigate(['/requestorder']);
+
+                }else{
+
+                  this.dataOrder.uid = this.user.id;
+                  this.dataOrder.firstname = this.user.firstname;
+                  this.dataOrder.lastname = this.user.lastname;
+                  this.dataOrder.phone = this.user.phone;
+                  this.dataOrder.email = this.user.email;
+                  this.dataOrder.status = 1;
+              
+                  
+                  this.afs.createOrderRequest(this.dataOrder).then(res => {
+              
+                       this.router.navigate(['/requestorder']);
+              
+                  }).catch(err => {
+                      console.log(err);
+                  });
+
+                }
             
-                this.dataOrder.uid = this.user.id;
-                this.dataOrder.firstname = this.user.firstname;
-                this.dataOrder.lastname = this.user.lastname;
-                this.dataOrder.phone = this.user.phone;
-                this.dataOrder.email = this.user.email;
-                this.dataOrder.status = 1;
-            
-                
-                this.afs.createOrderRequest(this.dataOrder).then(res => {
-            
-                     this.router.navigate(['/requestorder']);
-            
-                }).catch(err => {
-                    console.log(err);
-                });
+         
 
                
             });

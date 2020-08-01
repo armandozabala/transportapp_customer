@@ -39,4 +39,8 @@ export class MainPage implements OnInit {
  
   }
 
+  login(){
+    this.router.navigate(['/login'])
+  }
+
 }
