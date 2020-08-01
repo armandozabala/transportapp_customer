@@ -41,7 +41,7 @@ ion-icon{
 
  // The auto-fill value allows as many grid tracks to be fitted into the
  // width of the grid container as possible
- grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 
  // Specify the height of the row - minimum value of 50 pixels and a maximum
  // value set to auto
@@ -75,8 +75,8 @@ footer {
  opacity: 0.9;
  border-radius: 5px;
  padding: 1.2em;
- margin-left: 10px;
- margin-right: 10px;
+ margin-left: 25px;
+ margin-right: 25px;
  // Add a flex rule for browsers not supporting the
  // CSS Grid Layout spec
  flex: 1 1 100px;
