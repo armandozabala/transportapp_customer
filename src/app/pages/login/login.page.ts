@@ -111,7 +111,7 @@ export class LoginPage implements OnInit {
 
                  
                   if(this.dataOrder !=null){
-                    this.dataOrder.date = new Date().getTime();
+                    this.dataOrder.datedelivery = new Date().getTime();
                     this.dataOrder.uid = this.user.id;
                     this.dataOrder.firstname = this.user.firstname;
                     this.dataOrder.lastname = this.user.lastname;

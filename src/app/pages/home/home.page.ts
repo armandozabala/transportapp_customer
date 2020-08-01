@@ -551,7 +551,7 @@ async viewRoute(origen, destino){
         console.log( Object.keys(this.dataOrder).length);
 
         if(this.dataOrder != null && Object.keys(this.dataOrder).length != 0){
-          this.dataOrder.date = new Date().getTime();
+          this.dataOrder.datedelivery = new Date().getTime();
           this.dataOrder.uid = this.user.id;
           this.dataOrder.firstname = this.user.firstname;
           this.dataOrder.lastname = this.user.lastname;
