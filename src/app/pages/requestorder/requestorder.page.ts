@@ -31,6 +31,7 @@ export class RequestorderPage implements OnInit {
 
     this.user  = JSON.parse(localStorage.getItem('users'));
 
+
     if(this.user == null || this.user == undefined){
       this.router.navigate(['/login']);
     }else{
@@ -44,6 +45,7 @@ export class RequestorderPage implements OnInit {
 
   getOrders(id){
 
+     
     this.afs.getOrderRequest(id).subscribe(res => {
 
       console.log(res);

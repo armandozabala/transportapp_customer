@@ -109,6 +109,7 @@ export class FirestoreService {
       return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('date','desc')).snapshotChanges().pipe(
         map(actions =>
           actions.map(a => {
+              console.log(a);
               const data = a.payload.doc.data() as any;
               const id = a.payload.doc.id;
               return { id, ...data };

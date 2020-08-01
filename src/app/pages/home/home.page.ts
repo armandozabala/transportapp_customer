@@ -518,7 +518,6 @@ async viewRoute(origen, destino){
       }  
     }
 
- 
     let objData:any = { 
       distance: this.distance,
       time: this.time,
@@ -530,6 +529,8 @@ async viewRoute(origen, destino){
       lat_des: this.lat_des,
       lng_des: this.lng_des
     }
+
+
 
 
     localStorage.setItem('dataTravel', JSON.stringify(objData));
