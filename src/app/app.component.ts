@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
@@ -34,7 +34,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar, 
     private auth: AuthService, 
-    private router: Router
+    private router: Router,
+    public alertController: AlertController
   ) {
     this.initializeApp();
   }
@@ -45,7 +46,39 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
     });
 
+
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      console.log('Handler called to force close!');
+     
+          this.showExitConfirm();
+     
+    });
+
     this.user = JSON.parse(localStorage.getItem('users'));
+  }
+
+
+  showExitConfirm() {
+    this.alertController.create({
+      header: 'App termination',
+      message: 'Do you want to close the app?',
+      backdropDismiss: false,
+      buttons: [{
+        text: 'Stay',
+        role: 'cancel',
+        handler: () => {
+          console.log('Application exit prevented!');
+        }
+      }, {
+        text: 'Exit',
+        handler: () => {
+          navigator['app'].exitApp();
+        }
+      }]
+    })
+      .then(alert => {
+        alert.present();
+      });
   }
 
   ngOnInit() {

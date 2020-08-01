@@ -101,9 +101,8 @@ export class LoginPage implements OnInit {
             
                 this.user  = JSON.parse(localStorage.getItem('users'));
                 this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
-               
-                console.log( Object.keys(this.dataOrder).length);
-                
+              
+        
                 if(this.dataOrder == null || Object.keys(this.dataOrder).length == 0){
 
                     this.router.navigate(['/requestorder']);
