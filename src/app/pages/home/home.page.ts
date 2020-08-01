@@ -488,7 +488,6 @@ async viewRoute(origen, destino){
    
     this.user = JSON.parse(localStorage.getItem('users'));
 
-    console.log(this.user);
 
     if(this.user==null || this.user == undefined){
 
@@ -509,7 +508,7 @@ async viewRoute(origen, destino){
           this.dataOrder.lastname = this.user.lastname;
           this.dataOrder.phone = this.user.phone;
           this.dataOrder.email = this.user.email;
-          this.dataOrder.status = 1;
+          this.dataOrder.status = 0;
       
           
           this.afs.createOrderRequest(this.dataOrder).then(res => {

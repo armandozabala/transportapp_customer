@@ -117,7 +117,7 @@ export class LoginPage implements OnInit {
                     this.dataOrder.lastname = this.user.lastname;
                     this.dataOrder.phone = this.user.phone;
                     this.dataOrder.email = this.user.email;
-                    this.dataOrder.status = 1;
+                    this.dataOrder.status = 0;
                 
                     
                     this.afs.createOrderRequest(this.dataOrder).then(res => {
