@@ -448,7 +448,55 @@ async viewRoute(origen, destino){
 
   orders(){
 
-      this.confirmar_viaje();
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          distance: this.distance,
+          time: this.time,
+          total: this.total,
+          address1: this.address1,
+          address2: this.address2,
+          lat_ori: this.lat_ori,
+          lng_ori: this.lng_ori,
+          lat_des: this.lat_des,
+          lng_des: this.lng_des,
+      }  
+    }
+
+ 
+    let objData:any = { 
+      distance: this.distance,
+      time: this.time,
+      total: this.total,
+      address1: this.address1,
+      address2: this.address2,
+      lat_ori: this.lat_ori,
+      lng_ori: this.lng_ori,
+      lat_des: this.lat_des,
+      lng_des: this.lng_des
+    }
+
+
+    localStorage.setItem('dataTravel', JSON.stringify(objData));
+   
+    this.user = JSON.parse(localStorage.getItem('users'));
+
+
+    if(this.user==null || this.user == undefined){
+
+        this.router.navigate(['/login'], navigationExtras);
+
+    }else{
+
+
+        this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+    
+      
+       
+          this.router.navigate(['/requestorder']);
+        
+       
+    
+    }
 
   }
 
