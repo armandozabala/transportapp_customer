@@ -2,8 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 declare var google;
 
 @Component({
@@ -19,6 +22,9 @@ export class HomePage implements OnInit {
     map:any;
     searchResults:any = [];
     searchResultsDos:any = [];
+
+    dataOrder:any;
+    user:any;
 
    originMarker:any;
    originIndicator:any;
@@ -97,20 +103,30 @@ longitude:any;
                 private ngZone: NgZone, 
                 private launchNavigator: LaunchNavigator, 
                 private router: Router,
+                private afs: FirestoreService,
+                private auth: AuthService,
+                public menu: MenuController,
                 private nativeGeocoder: NativeGeocoder) {
      this.googleAutocomplete =  new google.maps.places.AutocompleteService();
      this.directionsService  = new google.maps.DirectionsService();
  
    }
 
+
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.back();
+    this.menu.enable(true);
+ 
+  }
+
    ionViewWillEnter(){
-      this.loadMap();
+      this.menu.enable(false);
    }
 
    ngOnInit() {
       this.loadMap();
-
-      localStorage.setItem('dataTravel', '');
+      this.menu.enable(false);
    }
 
 
@@ -251,8 +267,6 @@ async viewRoute(origen, destino){
               var route = response.routes[0];
               var r = response.routes[0].legs[0];
                
-              console.log(r);
-
               this.start_address = r.start_address;
               this.end_address = r.end_address;
           
@@ -434,6 +448,7 @@ async viewRoute(origen, destino){
 
   confirmar_viaje(){
 
+
     let navigationExtras: NavigationExtras = {
       queryParams: {
           distance: this.distance,
@@ -448,7 +463,9 @@ async viewRoute(origen, destino){
       }  
     }
 
-    let objData = { 
+ 
+    let objData:any = { 
+      date: new Date().getTime(),
       distance: this.distance,
       time: this.time,
       total: this.total,
@@ -460,17 +477,46 @@ async viewRoute(origen, destino){
       lng_des: this.lng_des
     }
 
+
     localStorage.setItem('dataTravel', JSON.stringify(objData));
+   
+    this.user = JSON.parse(localStorage.getItem('users'));
 
-    this.router.navigate(['/login'], navigationExtras)
+    console.log(this.user);
 
-    /*this.launchNavigator.navigate(this.destinyIndicator, {
-      start: `${this.originIndicator[0]}, ${this.originIndicator[1]}`
-    })
-    .then(
-      success => console.log('Launched navigator'),
-      error => console.log('Error launching navigator', error)
-    );*/
+    if(this.user==null || this.user == undefined){
+
+        this.router.navigate(['/login'], navigationExtras);
+
+    }else{
+
+
+        this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+    
+        this.dataOrder.uid = this.user.id;
+        this.dataOrder.firstname = this.user.firstname;
+        this.dataOrder.lastname = this.user.lastname;
+        this.dataOrder.phone = this.user.phone;
+        this.dataOrder.email = this.user.email;
+        this.dataOrder.status = 1;
+    
+        
+        this.afs.createOrderRequest(this.dataOrder).then(res => {
+    
+            console.log(res);
+            this.router.navigate(['/requestorder']);
+    
+        }).catch(err => {
+            console.log(err);
+        });
+        
+      
+
+
+    }
+ 
+
+    
 
   }
  

@@ -12,6 +12,10 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-item (click)="logout()" lines="none" detail="false">
+            <ion-icon slot="start" ios="exit" md="exit"></ion-icon>
+            <ion-label>Logout</ion-label>
+         </ion-item>
         </ion-list>
 
   

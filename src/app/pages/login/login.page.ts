@@ -18,6 +18,8 @@ export class LoginPage implements OnInit {
   disconnectSubscription:any;
   connectSubscription:any;
 
+  user:any;
+  dataOrder:any;
   type:any;
   conectados: boolean;
 
@@ -31,7 +33,7 @@ export class LoginPage implements OnInit {
   forma: FormGroup;
   loginform: FormGroup;
 
-  constructor(private auth: AuthService, private afs: FirestoreService, private route: ActivatedRoute, private router: Router) { 
+  constructor(public menu: MenuController, private auth: AuthService, private afs: FirestoreService, private route: ActivatedRoute, private router: Router) { 
     
     this.route.queryParams.subscribe(params =>{
       console.log(params);
@@ -91,16 +93,32 @@ export class LoginPage implements OnInit {
 
           if(data.user){
 
-            console.log(data.user);
+            //console.log(data.user);
             //console.log(data.user.uid);
 
             this.afs.getClienteUID(data.user.uid).subscribe((resp) => {
 
-                console.log(resp);
-                console.log("ENTRO CLIENTE");
-                //localStorage.setItem("user",JSON.stringify(resp[0]));
+            
+                this.user  = JSON.parse(localStorage.getItem('users'));
+                this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+            
+                this.dataOrder.uid = this.user.id;
+                this.dataOrder.firstname = this.user.firstname;
+                this.dataOrder.lastname = this.user.lastname;
+                this.dataOrder.phone = this.user.phone;
+                this.dataOrder.email = this.user.email;
+                this.dataOrder.status = 1;
+            
+                
+                this.afs.createOrderRequest(this.dataOrder).then(res => {
+            
+                     this.router.navigate(['/requestorder']);
+            
+                }).catch(err => {
+                    console.log(err);
+                });
 
-                //this.router.navigate(['/dashboard']);
+               
             });
 
             //

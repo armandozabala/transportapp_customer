@@ -1,9 +1,67 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>requestorder</ion-title>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Requests Orders
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <div class="sign-container gradient-1"  style=" overflow-y: auto;" >
+
+    <div *ngFor="let order of orders">
+      <ion-card >
+        <ion-card-header>
+  
+          <ion-row>
+            <ion-col  size="9">
+              <ion-card-title>Order</ion-card-title><br>
+              <ion-card-subtitle> Date: {{ order.date | date: 'dd/MM/yyyy HH:mm' }} </ion-card-subtitle>
+            </ion-col>
+        
+            <ion-col>
+              <ion-card-subtitle>  <ion-badge color="primary">Pending</ion-badge> </ion-card-subtitle>
+            </ion-col>
+            </ion-row>
+  
+  
+       
+        </ion-card-header>
+      
+        <ion-card-content>
+          <div class="address">
+            <span> Origin:  <b>  {{order.address1}} </b> </span> <br> 
+            <span> Destiny:  <b>  {{order.address2}} </b> </span>
+          </div>
+          <div class="information">
+            <span> <b>  Information </b></span>
+            <br>
+        
+  
+          <ion-row>
+            <ion-col>
+              Distance: <br> <b> {{order.distance}}  </b>
+            </ion-col>
+            <ion-col>
+              Time:  <br> <b> {{order.time}}  </b>
+            </ion-col>
+            <ion-col>
+              Total: <br> <b> {{order.total}}  </b> 
+            </ion-col>
+            </ion-row>
+          </div>
+         
+        </ion-card-content>
+      </ion-card>
+    </div>
+   
+  </div>
+
+
+
+
 
 </ion-content>

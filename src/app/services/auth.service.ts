@@ -28,11 +28,8 @@ export class AuthService {
   }
 
   async logout(){
-    localStorage.removeItem('users');
-    localStorage.removeItem('id');
-    localStorage.removeItem('email');
     await this.afAuth.signOut();
-    this.router.navigate(['/login']);
+  
   }
 
   isAuth(): any{

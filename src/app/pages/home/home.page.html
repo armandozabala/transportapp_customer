@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="success">
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
@@ -7,7 +7,7 @@
           Home
       </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 
 <ion-content>
@@ -50,7 +50,7 @@
         <p>  Aproximate Time: <b> {{ time}}  </b>  </p>
         <p>  Cost:  <b> {{ total}} $  </b>   </p>
         
-        <ion-button color="dark" expand="block" (click)="confirmar_viaje()">
+        <ion-button  class="request-button" expand="block" (click)="confirmar_viaje()">
             Request Order
         </ion-button>
 

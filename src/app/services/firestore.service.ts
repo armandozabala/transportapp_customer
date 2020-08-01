@@ -95,10 +95,25 @@ export class FirestoreService {
   getClienteUID(uid: string) {
     return this.db.collection("client", ref=> ref.where('id',"==",uid)).valueChanges().pipe(
       map((changes:any) => {
-        console.log("SERVICES", changes[0]);
-        //this.saveStorage(changes[0].id, changes[0]);
+        this.saveStorage(changes[0].id, changes[0]);
         return true;
       }));
   }
+
+  createOrderRequest(order:any){
+    return this.db.collection("orderRequest").add(order);
+  }
+
+    //edit user - get
+    getOrderRequest(uid: string) {
+      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('date','desc')).snapshotChanges().pipe(
+        map(actions =>
+          actions.map(a => {
+              const data = a.payload.doc.data() as any;
+              const id = a.payload.doc.id;
+              return { id, ...data };
+          })
+       ))
+    }
 
 }

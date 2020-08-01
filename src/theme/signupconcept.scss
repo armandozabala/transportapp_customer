@@ -78,8 +78,8 @@
 }
 
 .gradient-1 {
- --background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(48, 63, 71) 100%);
- background: linear-gradient(180deg, rgba(132,163,183,1) 0%, rgb(69, 117, 145) 100%);
+ --background: linear-gradient(180deg, #3867d6 0%, #26de81 100%);
+ background: linear-gradient(180deg, #3867d6 0%, #26de81 100%);
 }
 .gradient-2 {
 // --background: linear-gradient(180deg, #b2bec3 0%, #0984e3 80%);
@@ -97,6 +97,13 @@
  --background:  #00b894;
  color: #FFF;
 }
+
+.request-button {
+    font-weight: bold;
+ --background:  #0097e6;
+ color: #FFF;
+}
+
 .register-button {
     font-weight: bold;
  --background:  #00b894;

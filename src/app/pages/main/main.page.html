@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="success">
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
@@ -7,53 +7,38 @@
           Menu
       </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<!--  <img  src="../assets/imgs/madison.jpg" />-->
+<ion-content class="background" padding>
 
+  <div class="wrapper">
+     <!-- <header>
+        <h1>Ionic Technologies</h1>
+     </header> -->
 
-  <ion-card>
-    <img src="../assets/imgs/madison.jpg" />
-    <ion-card-header>
-      <ion-card-subtitle>Destination</ion-card-subtitle>
-      <ion-card-title>Madison, WI</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
- 
-      <div class="ion-text-center fade-in">
-        <ion-button (click)="goMap()" class="green-button">
-             Request Service
-        </ion-button>
-       
+     <div class="box red" (click)="goMap()">
+       <div class="box-container">
+        <ion-icon name="calendar"></ion-icon>
+        <h3>Angular</h3>
+        <p style="font-size: 11px;">Front-end development framework</p>
+       </div>
+      
+     </div>
+
+     <div class="box green text-center">
+      <div class="box-container">
+        <ion-icon name="calendar"></ion-icon>
+        <h3>Ionic Native</h3>
+        <p style="font-size: 11px;">Apache Cordova compatible plugins</p>
       </div>
-
-
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Services</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-
-      <div class="ion-text-center fade-in">
-        <ion-button class="green-button">
-             Read More
-        </ion-button>
-       
-      </div>
-
-    </ion-card-content>
-  </ion-card>
+     </div>
 
 
 
- 
-
- 
-
+     
+    <!--  <footer>Footer</footer> -->
+  </div>
 
 </ion-content>
+
