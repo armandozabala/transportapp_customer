@@ -101,28 +101,37 @@ export class LoginPage implements OnInit {
             
                 this.user  = JSON.parse(localStorage.getItem('users'));
                 this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
-
-                if(this.dataOrder == null){
+               
+                console.log( Object.keys(this.dataOrder).length);
+                
+                if(this.dataOrder == null || Object.keys(this.dataOrder).length == 0){
 
                     this.router.navigate(['/requestorder']);
 
                 }else{
 
-                  this.dataOrder.uid = this.user.id;
-                  this.dataOrder.firstname = this.user.firstname;
-                  this.dataOrder.lastname = this.user.lastname;
-                  this.dataOrder.phone = this.user.phone;
-                  this.dataOrder.email = this.user.email;
-                  this.dataOrder.status = 1;
+                 
+                  if(this.dataOrder !=null){
+                    this.dataOrder.uid = this.user.id;
+                    this.dataOrder.firstname = this.user.firstname;
+                    this.dataOrder.lastname = this.user.lastname;
+                    this.dataOrder.phone = this.user.phone;
+                    this.dataOrder.email = this.user.email;
+                    this.dataOrder.status = 1;
+                
+                    
+                    this.afs.createOrderRequest(this.dataOrder).then(res => {
+                
+                         this.router.navigate(['/requestorder']);
+                
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                  }else{
+                    this.router.navigate(['/requestorder']);
+                  }
+
               
-                  
-                  this.afs.createOrderRequest(this.dataOrder).then(res => {
-              
-                       this.router.navigate(['/requestorder']);
-              
-                  }).catch(err => {
-                      console.log(err);
-                  });
 
                 }
             
@@ -160,6 +169,12 @@ export class LoginPage implements OnInit {
                 console.log(resp);
 
                 this.forma.reset();
+
+                swal.fire('Success...', "Register succesfful", 'success');
+
+                this.toggleSignUpView();
+
+                //this.router.navigate(['/login']);
           
           }).catch((err) =>{
 

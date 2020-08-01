@@ -12,6 +12,10 @@
 <ion-content >
   <div class="sign-container gradient-1"  style=" overflow-y: auto;" >
 
+    <div *ngIf="orders.length == 0">
+        <span class="noOrders"> No Orders </span>
+    </div>
+
     <div *ngFor="let order of orders">
       <ion-card >
         <ion-card-header>
@@ -23,7 +27,7 @@
             </ion-col>
         
             <ion-col>
-              <ion-card-subtitle>  <ion-badge color="primary">Pending</ion-badge> </ion-card-subtitle>
+              <ion-card-subtitle> <span class="pills" [ngStyle]="{'background-color':  getColorStatus(order.status)  }"> {{ statusOrder(order.status) }}  </span>   </ion-card-subtitle>
             </ion-col>
             </ion-row>
   

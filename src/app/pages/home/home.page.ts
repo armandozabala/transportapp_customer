@@ -446,6 +446,13 @@ async viewRoute(origen, destino){
   // });
   }
 
+  orders(){
+
+      this.confirmar_viaje();
+
+  }
+
+
   confirmar_viaje(){
 
 
@@ -465,7 +472,6 @@ async viewRoute(origen, destino){
 
  
     let objData:any = { 
-      date: new Date().getTime(),
       distance: this.distance,
       time: this.time,
       total: this.total,
@@ -493,22 +499,31 @@ async viewRoute(origen, destino){
 
         this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
     
-        this.dataOrder.uid = this.user.id;
-        this.dataOrder.firstname = this.user.firstname;
-        this.dataOrder.lastname = this.user.lastname;
-        this.dataOrder.phone = this.user.phone;
-        this.dataOrder.email = this.user.email;
-        this.dataOrder.status = 1;
-    
-        
-        this.afs.createOrderRequest(this.dataOrder).then(res => {
-    
-            console.log(res);
-            this.router.navigate(['/requestorder']);
-    
-        }).catch(err => {
-            console.log(err);
-        });
+      
+        console.log( Object.keys(this.dataOrder).length);
+
+        if(this.dataOrder != null && Object.keys(this.dataOrder).length != 0){
+          this.dataOrder.date = new Date().getTime();
+          this.dataOrder.uid = this.user.id;
+          this.dataOrder.firstname = this.user.firstname;
+          this.dataOrder.lastname = this.user.lastname;
+          this.dataOrder.phone = this.user.phone;
+          this.dataOrder.email = this.user.email;
+          this.dataOrder.status = 1;
+      
+          
+          this.afs.createOrderRequest(this.dataOrder).then(res => {
+      
+              console.log(res);
+              this.router.navigate(['/requestorder']);
+      
+          }).catch(err => {
+              console.log(err);
+          });
+        }else{
+          this.router.navigate(['/requestorder']);
+        }
+       
         
       
 

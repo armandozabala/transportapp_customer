@@ -17,10 +17,14 @@ ion-icon{
 // We rely on the use of the CSS Flexbox standard instead
 .wrapper {
  display: flex;
- margin-top: 100px;
+
  flex-wrap: column
 }
 
+.header-logo{
+  margin-top: 100px;
+  margin-bottom: -100px;
+}
 
 // IF the browser DOES support the CSS Grid Layout specification
 // then the following rules are applied instead
@@ -41,7 +45,7 @@ ion-icon{
 
  // Specify the height of the row - minimum value of 50 pixels and a maximum
  // value set to auto
- grid-auto-rows: minmax(150px, auto);
+ grid-auto-rows: minmax(50px, auto);
 
 }
 
@@ -63,6 +67,7 @@ footer {
 
 .box-container{
   color: white;
+  text-align: center;
 }
 // Define the style rules for each panel within the grid
 // container
@@ -74,7 +79,7 @@ footer {
  margin-right: 10px;
  // Add a flex rule for browsers not supporting the
  // CSS Grid Layout spec
- flex: 1 1 200px;
+ flex: 1 1 100px;
 
  h2 {
     font-weight: bold;
@@ -113,7 +118,7 @@ background-color: rgba(220, 83, 81, 1);
 }
 
 .green {
-background-color: rgba(187, 225, 123, 1);
+background-color: rgb(34, 62, 151);
 }
 
 .blue {

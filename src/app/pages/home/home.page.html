@@ -14,10 +14,17 @@
   <div id="map" #map></div>
 
   <ion-fab *ngIf="!seeDestination" vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="loadMap()">
-          <ion-icon name="location-outline"></ion-icon>
+      <ion-fab-button color="primary" (click)="loadMap()">
+          <ion-icon name="location"></ion-icon>
       </ion-fab-button>
+    
   </ion-fab>
+
+  <ion-fab *ngIf="!seeDestination" vertical="bottom" horizontal="start"  slot="fixed">
+    <ion-fab-button color="success" (click)="orders()">
+        <ion-icon name="list"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
 
 
 

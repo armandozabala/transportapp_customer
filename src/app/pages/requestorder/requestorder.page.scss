@@ -7,3 +7,19 @@
 .information{
   margin-top: 10px;
 }
+
+.noOrders{
+   display: absolute;
+   flex-direction: column;
+   flex-wrap: wrap;
+   flex: 2;
+   color: white;
+}
+
+.pills{
+  position: absolute;
+   border-radius:4px;
+   padding: 5px;
+   font-size: 13px;
+   color: white;
+}

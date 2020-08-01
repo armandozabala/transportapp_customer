@@ -12,11 +12,18 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  user:any;
   public selectedIndex = 0;
   public appPages = [
     {
       title: 'Main',
       url: 'home',
+      icon: 'paper-plane'
+    },
+    {
+      title: 'Requests',
+      url: 'requestorder',
       icon: 'paper-plane'
     },
   ];
@@ -37,6 +44,8 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.user = JSON.parse(localStorage.getItem('users'));
   }
 
   ngOnInit() {
