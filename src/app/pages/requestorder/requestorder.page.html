@@ -22,43 +22,69 @@
   
           <ion-row>
             <ion-col  size="9">
-              <ion-card-title>Order</ion-card-title><br>
-              <ion-card-subtitle> Date: {{ order.datedelivery | date: 'dd/MM/yyyy' }} </ion-card-subtitle>
+              <ion-card-title>Order  </ion-card-title>
+             
             </ion-col>
         
             <ion-col>
               <ion-card-subtitle> <span class="pills" [ngStyle]="{'background-color':  getColorStatus(order.status)  }"> {{ statusOrder(order.status) }}  </span>   </ion-card-subtitle>
             </ion-col>
             </ion-row>
+
+          <ion-row *ngIf="order.status == 1">
+            
+              <div >
+
+                <img class="imgs" [src]="order.driverImg" alt="Avatar">
+                <div  style="display: inline; position: absolute; margin-left: 15px; line-height: 8px;">
+                  <p>Driver assigned</p> 
+                  <p> <b style="color:black"> {{ order.driverName }} {{ order.driverLast}}   </b> </p>
   
+                </div>
+               
+              </div>
+
+          </ion-row>
+
+          <ion-row>
+
+  
+
+            <div class="address">
+
+              <span> Date:  <b>  {{ order.datedelivery | date: 'dd/MM/yyyy' }}  </b></span> <br>
+
+              <span> Origin:  <b>  {{order.address}} </b> </span> <br> 
+              <span> Destiny:  <b>  {{order.address2}} </b> </span>
+
+            </div>
+
+          </ion-row>
+
+          <ion-row>
+
+            <div class="information">
+              <span> <b>  Details </b></span>
+            </div>
+
+          </ion-row>
+  
+          <ion-row>
+
+            <div class="flex-container">
+              <div>  Distance:   <span class="pillsdos" style="background-color:#273c75;"> {{order.distance}} </span> </div>
+              <div style="margin-left: 18px;">  Time:   <span class="pillsdos" style="background-color: #273c75;">  {{order.time}}   </span>  </div>
+              <div>  Total:  <span class="pillsdos" style="background-color: #273c75;"> {{order.total}}  </span> </div>  
+
+            </div>
+
+       
+            </ion-row>
   
        
         </ion-card-header>
       
-        <ion-card-content>
-          <div class="address">
-            <span> Origin:  <b>  {{order.address}} </b> </span> <br> 
-            <span> Destiny:  <b>  {{order.address2}} </b> </span>
-          </div>
-          <div class="information">
-            <span> <b>  Information </b></span>
-            <br>
-        
   
-          <ion-row>
-            <ion-col>
-              Distance: <br> <b> {{order.distance}}  </b>
-            </ion-col>
-            <ion-col>
-              Time:  <br> <b> {{order.time}}  </b>
-            </ion-col>
-            <ion-col>
-              Total: <br> <b> {{order.total}}  </b> 
-            </ion-col>
-            </ion-row>
-          </div>
-         
-        </ion-card-content>
       </ion-card>
     </div>
    

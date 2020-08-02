@@ -547,8 +547,6 @@ async viewRoute(origen, destino){
 
         this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
     
-      
-        console.log( Object.keys(this.dataOrder).length);
 
         if(this.dataOrder != null && Object.keys(this.dataOrder).length != 0){
           this.dataOrder.datedelivery = new Date();
@@ -563,6 +561,9 @@ async viewRoute(origen, destino){
           this.dataOrder.phone = this.user.phone;
           this.dataOrder.email = this.user.email;
           this.dataOrder.status = 0;
+          
+          
+
       
           
           this.afs.createOrderRequest(this.dataOrder).then(res => {
