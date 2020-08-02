@@ -453,7 +453,7 @@ async viewRoute(origen, destino){
           distance: this.distance,
           time: this.time,
           total: this.total,
-          address1: this.address1,
+          address: this.address1,
           address2: this.address2,
           lat_ori: this.lat_ori,
           lng_ori: this.lng_ori,
@@ -467,7 +467,7 @@ async viewRoute(origen, destino){
       distance: this.distance,
       time: this.time,
       total: this.total,
-      address1: this.address1,
+      address: this.address1,
       address2: this.address2,
       lat_ori: this.lat_ori,
       lng_ori: this.lng_ori,
@@ -509,7 +509,7 @@ async viewRoute(origen, destino){
           distance: this.distance,
           time: this.time,
           total: this.total,
-          address1: this.address1,
+          address: this.address1,
           address2: this.address2,
           lat_ori: this.lat_ori,
           lng_ori: this.lng_ori,
@@ -522,7 +522,7 @@ async viewRoute(origen, destino){
       distance: this.distance,
       time: this.time,
       total: this.total,
-      address1: this.address1,
+      address: this.address1,
       address2: this.address2,
       lat_ori: this.lat_ori,
       lng_ori: this.lng_ori,
@@ -551,7 +551,11 @@ async viewRoute(origen, destino){
         console.log( Object.keys(this.dataOrder).length);
 
         if(this.dataOrder != null && Object.keys(this.dataOrder).length != 0){
-          this.dataOrder.datedelivery = new Date().getTime();
+          this.dataOrder.datedelivery = new Date();
+          this.dataOrder.datedelivery.setHours(0);
+          this.dataOrder.datedelivery.setMinutes(0);
+          this.dataOrder.datedelivery.setSeconds(0);
+          this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
           this.dataOrder.uid = this.user.id;
           this.dataOrder.companyname = "No Company";
           this.dataOrder.firstnamecontact = this.user.firstname;

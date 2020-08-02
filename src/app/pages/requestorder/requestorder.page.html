@@ -23,7 +23,7 @@
           <ion-row>
             <ion-col  size="9">
               <ion-card-title>Order</ion-card-title><br>
-              <ion-card-subtitle> Date: {{ order.datedelivery | date: 'dd/MM/yyyy HH:mm' }} </ion-card-subtitle>
+              <ion-card-subtitle> Date: {{ order.datedelivery | date: 'dd/MM/yyyy' }} </ion-card-subtitle>
             </ion-col>
         
             <ion-col>
@@ -37,7 +37,7 @@
       
         <ion-card-content>
           <div class="address">
-            <span> Origin:  <b>  {{order.address1}} </b> </span> <br> 
+            <span> Origin:  <b>  {{order.address}} </b> </span> <br> 
             <span> Destiny:  <b>  {{order.address2}} </b> </span>
           </div>
           <div class="information">
