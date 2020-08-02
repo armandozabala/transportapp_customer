@@ -553,8 +553,9 @@ async viewRoute(origen, destino){
         if(this.dataOrder != null && Object.keys(this.dataOrder).length != 0){
           this.dataOrder.datedelivery = new Date().getTime();
           this.dataOrder.uid = this.user.id;
-          this.dataOrder.firstname = this.user.firstname;
-          this.dataOrder.lastname = this.user.lastname;
+          this.dataOrder.companyname = "No Company";
+          this.dataOrder.firstnamecontact = this.user.firstname;
+          this.dataOrder.lastnamecontact = this.user.lastname;
           this.dataOrder.phone = this.user.phone;
           this.dataOrder.email = this.user.email;
           this.dataOrder.status = 0;

@@ -17,13 +17,13 @@
     </div>
 
     <div *ngFor="let order of orders">
-      <ion-card >
+      <ion-card style="margin-right: 20px; margin-left: 20px;">
         <ion-card-header>
   
           <ion-row>
             <ion-col  size="9">
               <ion-card-title>Order</ion-card-title><br>
-              <ion-card-subtitle> Date: {{ order.date | date: 'dd/MM/yyyy HH:mm' }} </ion-card-subtitle>
+              <ion-card-subtitle> Date: {{ order.datedelivery | date: 'dd/MM/yyyy HH:mm' }} </ion-card-subtitle>
             </ion-col>
         
             <ion-col>

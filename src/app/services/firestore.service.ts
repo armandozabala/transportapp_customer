@@ -106,7 +106,7 @@ export class FirestoreService {
 
     //edit user - get
     getOrderRequest(uid: string) {
-      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('date','desc')).snapshotChanges().pipe(
+      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('datedelivery','desc')).snapshotChanges().pipe(
         map(actions =>
           actions.map(a => {
               console.log(a);
