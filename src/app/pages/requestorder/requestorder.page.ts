@@ -49,7 +49,6 @@ export class RequestorderPage implements OnInit {
      
     this.afs.getOrderRequest(id).subscribe(res => {
 
-      console.log(res);
       this.orders = res;
 
 

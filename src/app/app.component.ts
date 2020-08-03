@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Main',
       url: 'home',
-      icon: 'paper-plane'
+      icon: 'map'
     },
     {
       title: 'Requests',
       url: 'requestorder',
-      icon: 'paper-plane'
+      icon: 'reorder-four'
     },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

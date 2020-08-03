@@ -54,6 +54,7 @@ export class AuthService {
 
   async logout(){
     await this.afAuth.signOut();
+    localStorage.removeItem('users');
   
   }
 

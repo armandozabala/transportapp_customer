@@ -59,6 +59,7 @@ export class FirestoreService {
  
     localStorage.setItem('id', documentId);
     localStorage.setItem('users', JSON.stringify(dataUser));
+
   }
 
     //edit user - get
@@ -106,7 +107,7 @@ export class FirestoreService {
 
     //edit user - get
     getOrderRequest(uid: string) {
-      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('datedelivery','desc')).snapshotChanges().pipe(
+      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('datedeliveryorder','desc')).snapshotChanges().pipe(
         map(actions =>
           actions.map(a => {
               const data = a.payload.doc.data() as any;

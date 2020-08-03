@@ -7,10 +7,11 @@
           
        
             <div class="menu" *ngIf="user!=null">
-              <h3>Transportapp Client</h3>
-                  <img class="imgcircle" *ngIf="user!=null" src="{{ user.photo  }}"> 
+            
+                  <img class="imgcircle" *ngIf="user!=null && user.photo!=null" src="{{ user.photo  }}"> 
                   <p   *ngIf="user!=null" class="name"> {{ user.firstname}} {{ user.lastname}} </p>
                   <span  *ngIf="user!=null" class="email"> {{ user.email}} </span>
+                  <h3>Transportapp Client</h3>
             </div>
           </ion-list-header>
          

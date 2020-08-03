@@ -114,6 +114,7 @@ export class LoginPage implements OnInit {
                     this.dataOrder.datedelivery.setMinutes(0);
                     this.dataOrder.datedelivery.setSeconds(0);
                     this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
+                    this.dataOrder.datedeliveryorder = new Date().getTime();
                     this.dataOrder.uid = this.user.id;
                     this.dataOrder.companyname = "No Company";
                     this.dataOrder.firstnamecontact = this.user.firstname;
@@ -159,6 +160,8 @@ export class LoginPage implements OnInit {
 
   loginGoogle(){
 
+    localStorage.removeItem('users');
+
     let users:any = this.auth.loginGoogle();
 
       users.then(user=>{
@@ -197,6 +200,7 @@ export class LoginPage implements OnInit {
                   this.dataOrder.datedelivery.setMinutes(0);
                   this.dataOrder.datedelivery.setSeconds(0);
                   this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
+                  this.dataOrder.datedeliveryorder = new Date().getTime();
                   this.dataOrder.uid = this.user.id;
                   this.dataOrder.companyname = "No Company";
                   this.dataOrder.firstnamecontact = this.user.firstname;

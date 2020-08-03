@@ -554,6 +554,7 @@ async viewRoute(origen, destino){
           this.dataOrder.datedelivery.setMinutes(0);
           this.dataOrder.datedelivery.setSeconds(0);
           this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
+          this.dataOrder.datedeliveryorder = new Date().getTime();
           this.dataOrder.uid = this.user.id;
           this.dataOrder.companyname = "No Company";
           this.dataOrder.firstnamecontact = this.user.firstname;
