@@ -113,5 +113,5 @@
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="AIzaSyBcoKCwJkQ-MRbtj-DyANdxb6KnCaTErHg" />
         <variable name="OKHTTP_VERSION" value="3.12.0" />
     </plugin>
-    <engine name="android" spec="~7.1.4" />
+    <engine name="android" spec="^7.1.4" />
 </widget>

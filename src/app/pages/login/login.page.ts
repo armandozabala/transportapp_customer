@@ -160,91 +160,81 @@ export class LoginPage implements OnInit {
 
     //localStorage.removeItem('users');
 
-    this.auth.loginGoogle().then((res) => {
+    this.auth.loginGoogle().then((user:any) => {
+    
+    
+      alert(JSON.stringify(user.user));
 
-      alert(res);
-
-    }).catch(err => {
-
-      console.log(err);
-
-    });
-/*
-      users.then(user=>{
-
-          console.log(user);
-
-          let us:any = {};
+       let us:any = {};
           
-          us.email = user.email;
-          us.id = user.uid;
-          us.photo = user.photoURL;
-          let name = user.displayName.split(" ");
-          us.firstname = name[0];
-          us.lastname = name[1];
-          us.status = true;
-          us.phone = 0;
-    
-          localStorage.setItem('users', JSON.stringify(us));
-    
-          this.afs.createClienteUID(us).then((resp) => { 
-                   
-              this.user  = JSON.parse(localStorage.getItem('users'));
-              this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+       us.email = user.user.email;
+       us.id = user.user.uid;
+       us.photo = user.user.photoURL;
+       let name = user.user.displayName.split(" ");
+       us.firstname = name[0];
+       us.lastname = name[1];
+       us.status = true;
+       us.phone = 0;
+ 
+       localStorage.setItem('users', JSON.stringify(us));
+ 
+       this.afs.createClienteUID(us).then((resp) => { 
+                
+           this.user  = JSON.parse(localStorage.getItem('users'));
+           this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
+         
+   
+           if(this.dataOrder == null || Object.keys(this.dataOrder).length == 0){
+ 
+               this.router.navigate(['/requestorder']);
+ 
+           }else{
+ 
             
-      
-              if(this.dataOrder == null || Object.keys(this.dataOrder).length == 0){
-    
-                  this.router.navigate(['/requestorder']);
-    
-              }else{
-    
+             if(this.dataOrder !=null){
+               this.dataOrder.datedelivery = new Date();
+               this.dataOrder.datedelivery.setHours(0);
+               this.dataOrder.datedelivery.setMinutes(0);
+               this.dataOrder.datedelivery.setSeconds(0);
+               this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
+               this.dataOrder.datedeliveryorder = new Date().getTime();
+               this.dataOrder.uid = this.user.id;
+               this.dataOrder.companyname = "No Company";
+               this.dataOrder.firstnamecontact = this.user.firstname;
+               this.dataOrder.lastnamecontact = this.user.lastname;
+               this.dataOrder.phone = this.user.phone;
+               this.dataOrder.email = this.user.email;
+               this.dataOrder.status = 0;
+           
                
-                if(this.dataOrder !=null){
-                  this.dataOrder.datedelivery = new Date();
-                  this.dataOrder.datedelivery.setHours(0);
-                  this.dataOrder.datedelivery.setMinutes(0);
-                  this.dataOrder.datedelivery.setSeconds(0);
-                  this.dataOrder.datedelivery = this.dataOrder.datedelivery.getTime();
-                  this.dataOrder.datedeliveryorder = new Date().getTime();
-                  this.dataOrder.uid = this.user.id;
-                  this.dataOrder.companyname = "No Company";
-                  this.dataOrder.firstnamecontact = this.user.firstname;
-                  this.dataOrder.lastnamecontact = this.user.lastname;
-                  this.dataOrder.phone = this.user.phone;
-                  this.dataOrder.email = this.user.email;
-                  this.dataOrder.status = 0;
-              
-                  
-                  this.afs.createOrderRequest(this.dataOrder).then(res => {
-              
-                       this.router.navigate(['/requestorder']);
-              
-                  }).catch(err => {
-                      console.log(err);
-                  });
-                }else{
-                  this.router.navigate(['/requestorder']);
-                }
-    
-            
-    
-              }
-          
-    
-          }).catch(err => {
-          
-              console.log(err);
-    
-          });
+               this.afs.createOrderRequest(this.dataOrder).then(res => {
+           
+                    this.router.navigate(['/requestorder']);
+           
+               }).catch(err => {
+                   console.log(err);
+               });
+             }else{
+               this.router.navigate(['/requestorder']);
+             }
+ 
+         
+ 
+           }
+       
+ 
+       }).catch(err => {
+       
+           console.log(err);
+ 
+       });
 
-      }).catch(err => {
+   }).catch(err => {
 
-          console.log(err);
+       console.log(err);
 
-      });
+   });
 
-*/
 
   }
 

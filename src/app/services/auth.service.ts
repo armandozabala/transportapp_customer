@@ -35,13 +35,17 @@ export class AuthService {
   loginGoogle(){
 
 
-      return this.googlePlus.login({}).then(res =>{
+     return this.googlePlus.login({}).then((res:any) =>{
 
-          const user = res;
 
-          alert(user);
+          return this.afAuth.signInWithCredential( auth.GoogleAuthProvider.credential(null, res.accessToken)).then(resp =>{
 
-          return this.afAuth.signInWithCredential( auth.GoogleAuthProvider.credential(null, user.accessToken))
+      
+              return resp;
+
+          });
+
+         
 
       }).catch(error => {
 
