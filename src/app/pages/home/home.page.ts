@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { LoadingController, MenuController } from '@ionic/angular';
@@ -101,7 +100,6 @@ longitude:any;
    constructor(public loadingController: LoadingController, 
                 private geolocation: Geolocation, 
                 private ngZone: NgZone, 
-                private launchNavigator: LaunchNavigator, 
                 private router: Router,
                 private afs: FirestoreService,
                 private auth: AuthService,

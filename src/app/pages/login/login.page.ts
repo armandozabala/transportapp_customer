@@ -3,8 +3,6 @@ import { MenuController, Platform, ToastController } from '@ionic/angular';
 import { Network } from '@ionic-native/network/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from'sweetalert2';
-import { BackgroundtaskService } from 'src/app/services/backgroundtask.service';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -160,10 +158,18 @@ export class LoginPage implements OnInit {
 
   loginGoogle(){
 
-    localStorage.removeItem('users');
+    //localStorage.removeItem('users');
 
-    let users:any = this.auth.loginGoogle();
+    this.auth.loginGoogle().then((res) => {
 
+      alert(res);
+
+    }).catch(err => {
+
+      console.log(err);
+
+    });
+/*
       users.then(user=>{
 
           console.log(user);
@@ -238,7 +244,7 @@ export class LoginPage implements OnInit {
 
       });
 
-
+*/
 
   }
 

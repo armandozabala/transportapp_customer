@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation/ngx';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -19,19 +17,11 @@ export class BackgroundtaskService {
 
   timeTracking = 5000;
 
-  config: BackgroundGeolocationConfig = {
-    desiredAccuracy: 10,
-    stationaryRadius: 1,
-    distanceFilter: 1,
-    debug: false, //  enable this hear sounds for background-geolocation life-cycle.
-    stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-  };
 
   constructor( 
               public db: AngularFirestore, 
               public afs: FirestoreService,
               private geolocation: Geolocation,
-              private backgroundGeolocation: BackgroundGeolocation,
               public toastController: ToastController) {
 
               

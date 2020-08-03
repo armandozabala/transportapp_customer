@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { HttpClient } from  '@angular/common/http';
 
 import { auth} from 'firebase/app';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public http: HttpClient, public  afAuth:  AngularFireAuth, private router: Router) { }
+  constructor(public http: HttpClient, public  afAuth:  AngularFireAuth, private router: Router, private googlePlus: GooglePlus) { }
 
 
   createUser(user: any){
@@ -31,16 +32,21 @@ export class AuthService {
   }
 
 
-  async loginGoogle(){
+  loginGoogle(){
 
-    try{
-      
-      const {user} = await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider())
-      return user;
-      
-    }catch(err){
-        console.log(err);
-    }
+
+      return this.googlePlus.login({}).then(res =>{
+
+          const user = res;
+
+          alert(user);
+
+          return this.afAuth.signInWithCredential( auth.GoogleAuthProvider.credential(null, user.accessToken))
+
+      }).catch(error => {
+
+      })
+
      
   }
 

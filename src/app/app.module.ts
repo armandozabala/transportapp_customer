@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { environment } from 'src/environments/environment';
 
@@ -21,8 +20,10 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from  '@angular/common/http';
 
 import { Network } from '@ionic-native/network/ngx';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
-import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
+
+
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -37,14 +38,12 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx'
     HttpClientModule,
   ],
   providers: [
+    GooglePlus,
     StatusBar,
     Network,
-    BackgroundMode,
     SplashScreen,
     Geolocation,
-    LaunchNavigator,
     NativeGeocoder,
-    BackgroundGeolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
