@@ -63,7 +63,13 @@ export class AuthService {
   }
 
   async logout(){
+
     await this.afAuth.signOut();
+
+    this.googlePlus.disconnect();
+
+    this.googlePlus.logout();
+  
     localStorage.removeItem('users');
   
   }
