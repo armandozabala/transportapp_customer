@@ -163,8 +163,6 @@ export class LoginPage implements OnInit {
     this.auth.loginGoogle().then((user:any) => {
     
     
-      alert(JSON.stringify(user.user));
-
        let us:any = {};
           
        us.email = user.user.email;
