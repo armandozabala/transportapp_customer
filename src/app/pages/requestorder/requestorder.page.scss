@@ -11,12 +11,16 @@
 
 .noOrders{
  
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
- 
+    font-size: 45px;
+    color:white;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    height: 550px;
 }
+
+
 
 .pills{
   position: absolute;
@@ -58,5 +62,5 @@ img {
   margin: 0px;
   margin-top: 10px;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 13px;
 }

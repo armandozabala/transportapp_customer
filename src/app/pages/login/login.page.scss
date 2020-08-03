@@ -28,7 +28,7 @@
     flex-direction: column;  /* make main axis vertical */
     justify-content: center; /* center items vertically, in this case */
     align-items: center;     /* center items horizontally, in this case */
-    height: 300px;
+    height: 340px;
     opacity: 0.9 !important;
   }
 
@@ -37,6 +37,12 @@
       width: 100%;
       opacity: 1 !important;
   }
+
+  .red-button{
+    z-index: 999;
+    width: 100%;
+    opacity: 1 !important;
+}
 
   .register-button{
     z-index: 999;
@@ -54,6 +60,7 @@
     right: 10px;
     
 }
+
 
 .card-center {
     top: 25%;

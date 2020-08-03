@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { HttpClient } from  '@angular/common/http';
+
+import { auth} from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +28,28 @@ export class AuthService {
         localStorage.removeItem('email');
     }
     return this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
+
+  async loginGoogle(){
+
+    try{
+      
+      const {user} = await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider())
+      return user;
+      
+    }catch(err){
+        console.log(err);
+    }
+     
+  }
+
+  async resetPassword(email: string){
+    try{
+        return this.afAuth.sendPasswordResetEmail(email);
+    }catch(err){
+        console.log(err);
+    }
   }
 
   async logout(){

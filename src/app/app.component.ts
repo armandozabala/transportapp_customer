@@ -50,11 +50,13 @@ export class AppComponent implements OnInit {
     this.platform.backButton.subscribeWithPriority(-1, () => {
       console.log('Handler called to force close!');
      
-          this.showExitConfirm();
+          //this.showExitConfirm();
+          navigator['app'].exitApp();
      
     });
 
     this.user = JSON.parse(localStorage.getItem('users'));
+
   }
 
 

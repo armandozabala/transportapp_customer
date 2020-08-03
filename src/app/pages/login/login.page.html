@@ -34,6 +34,9 @@
           <ion-button class="green-button" type="submit" tappable [disabled]="loginform.invalid">
             Login
           </ion-button>
+          <ion-button class="red-button" (click)="loginGoogle()">
+              Login Google  <ion-icon name="logo-google"></ion-icon>
+          </ion-button>
           <ion-button class="register-button" (click)="toggleSignUpView()">
             Register
           </ion-button>
@@ -93,8 +96,8 @@
 
       
       
-      <div class="ion-text-center" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">
-        <ion-button type="submit" class="gray-button">
+      <div class="ion-text-center" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}"> 
+        <ion-button class="register-button"    type="submit">
           Register
         </ion-button>
       </div>

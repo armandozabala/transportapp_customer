@@ -19,6 +19,7 @@ export class RequestorderPage implements OnInit {
 
   ionViewWillEnter() { 
 
+
     this.user  = JSON.parse(localStorage.getItem('users'));
 
     if(this.user == null || this.user == undefined){
