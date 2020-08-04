@@ -107,7 +107,7 @@ export class FirestoreService {
 
     //edit user - get
     getOrderRequest(uid: string) {
-      return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).orderBy('datedeliveryorder','desc')).snapshotChanges().pipe(
+      return this.db.collection("orderRequest", ref=> ref.orderBy('datedeliveryorder','desc').where('uid',"==",uid)).snapshotChanges().pipe(
         map(actions =>
           actions.map(a => {
               const data = a.payload.doc.data() as any;
@@ -116,5 +116,17 @@ export class FirestoreService {
           })
        ))
     }
+
+        //edit user - get
+        getHistoryOrders(uid: string) {
+          return this.db.collection("orderRequest", ref=> ref.where('uid',"==",uid).where('status','>',1)).snapshotChanges().pipe(
+            map(actions =>
+              actions.map(a => {
+                  const data = a.payload.doc.data() as any;
+                  const id = a.payload.doc.id;
+                  return { id, ...data };
+              })
+           ))
+        }
 
 }

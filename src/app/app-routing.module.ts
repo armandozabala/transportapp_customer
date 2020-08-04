@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'requestorder',
     loadChildren: () => import('./pages/requestorder/requestorder.module').then( m => m.RequestorderPageModule)
+  },
+  {
+    path: 'orderhistory',
+    loadChildren: () => import('./pages/orderhistory/orderhistory.module').then( m => m.OrderhistoryPageModule)
   }
 ];
 

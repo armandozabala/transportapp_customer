@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
       url: 'requestorder',
       icon: 'reorder-four'
     },
+    {
+      title: 'History Orders',
+      url: 'orderhistory',
+      icon: 'time'
+    },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 

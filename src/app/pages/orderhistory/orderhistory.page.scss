@@ -1,0 +1,66 @@
+.address{
+ font-size: 12px;
+ line-height: 25px;
+ color: black;
+ margin-top: 5px;
+}
+
+.information{
+ margin-top: 10px;
+}
+
+.noOrders{
+
+   font-size: 45px;
+   color:white;
+   display: flex;           /* establish flex container */
+   flex-direction: column;  /* make main axis vertical */
+   justify-content: center; /* center items vertically, in this case */
+   align-items: center;     /* center items horizontally, in this case */
+   height: 550px;
+}
+
+
+
+.pills{
+ position: absolute;
+  border-radius:4px;
+  padding: 5px;
+  font-size: 13px;
+  color: white;
+}
+
+.pillsdos{
+ position: absolute;
+  border-radius:4px;
+  padding: 1px;
+  margin-left: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size: 13px;
+  color: white;
+}
+
+.imgs{
+ margin-top: 5px;
+}
+
+img {
+ border-radius: 50%;
+ width: 50px;
+ height: 50px;
+ display: inline;
+}
+
+.flex-container {
+ display: flex;
+ flex-wrap: nowrap;
+}
+
+.flex-container > div {
+ width: 113px;
+ margin: 0px;
+ margin-top: 10px;
+ line-height: 20px;
+ font-size: 12px;
+}
