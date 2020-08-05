@@ -96,8 +96,14 @@ export class FirestoreService {
   getClienteUID(uid: string) {
     return this.db.collection("client", ref=> ref.where('id',"==",uid)).valueChanges().pipe(
       map((changes:any) => {
-        this.saveStorage(changes[0].id, changes[0]);
-        return true;
+        console.log(changes);
+        if(changes.length == 0){
+            return false;
+        }else{
+          this.saveStorage(changes[0].id, changes[0]);
+          return true;
+        }
+       
       }));
   }
 

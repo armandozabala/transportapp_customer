@@ -31,7 +31,11 @@ export class LoginPage implements OnInit {
   forma: FormGroup;
   loginform: FormGroup;
 
-  constructor(public menu: MenuController, private auth: AuthService, private afs: FirestoreService, private route: ActivatedRoute, private router: Router) { 
+  constructor(public menu: MenuController, 
+              private auth: AuthService, 
+              private afs: FirestoreService, 
+              private route: ActivatedRoute, 
+              private router: Router) { 
     
     this.route.queryParams.subscribe(params =>{
       console.log(params);
@@ -95,6 +99,9 @@ export class LoginPage implements OnInit {
             this.afs.getClienteUID(data.user.uid).subscribe((resp) => {
 
             
+              if(resp){
+
+             
                 this.user  = JSON.parse(localStorage.getItem('users'));
                 this.dataOrder = JSON.parse(localStorage.getItem('dataTravel'));
               
@@ -138,6 +145,9 @@ export class LoginPage implements OnInit {
                 }
             
          
+              }else{
+                swal.fire('Error...', "User no exist", 'error');
+              }
 
                
             });

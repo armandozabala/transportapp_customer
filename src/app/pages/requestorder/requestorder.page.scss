@@ -31,10 +31,9 @@
 }
 
 .pillsdos{
-  position: absolute;
+
    border-radius:4px;
    padding: 1px;
-   margin-left: 5px;
    padding-left: 6px;
    padding-right: 6px;
    font-size: 13px;
@@ -53,14 +52,27 @@ img {
 }
 
 .flex-container {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  list-style: none;
   display: flex;
-  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
-.flex-container > div {
-  width: 113px;
-  margin: 0px;
-  margin-top: 10px;
-  line-height: 20px;
+.row {
+  width: 200px;
+  text-align: center;
+}
+.flex-item {
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
   font-size: 12px;
+  text-align: center;
 }
