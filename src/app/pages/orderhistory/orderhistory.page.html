@@ -17,7 +17,7 @@
     </div>
 
     <div *ngFor="let order of orders">
-      <ion-card style="margin-right: 15px; margin-left: 15px;">
+      <ion-card style="margin-right: 15px; margin-left: 15px; padding-bottom: 10px;">
         <ion-card-header>
   
           <ion-row>
@@ -31,7 +31,7 @@
             </ion-col>
             </ion-row>
 
-          <ion-row *ngIf="order.status == 1">
+            <ion-row *ngIf="order.status >= 1">
             
               <div >
 
@@ -69,17 +69,24 @@
 
           </ion-row>
   
-          <ion-row>
-
-            <div class="flex-container">
-              <div>  Distance:   <span class="pillsdos" style="background-color:#273c75;"> {{order.distance}} </span> </div>
-              <div style="margin-left: 20px;">  Time:   <span class="pillsdos" style="background-color: #273c75;">  {{order.time}}   </span>  </div>
-              <div>  Total:  <span class="pillsdos" style="background-color: #273c75;"> {{order.total}}  </span> </div>  
-
+          <div class="flex-container">
+            <div class="row">
+                
+                Distance:  <br> <span class="pillsdos" style="background-color:#273c75;"> {{order.distance}} </span> 
+           
             </div>
-
-       
-            </ion-row>
+            <div class="row">
+            
+                Time: <br>   <span class="pillsdos" style="background-color: #273c75;">  {{order.time}}   </span> 
+              
+            </div>
+            <div class="row">
+             
+                Total: <br>  <span class="pillsdos" style="background-color: #273c75;"> {{order.total}}  </span> 
+             
+            </div>
+ 
+          </div>
   
        
         </ion-card-header>
