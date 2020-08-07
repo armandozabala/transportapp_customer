@@ -226,7 +226,7 @@ longitude:any;
 
 
 
-  onSearch(){
+  onSearch(event){
       if(!this.search.trim().length) return;
 
       this.googleAutocomplete.getPlacePredictions({ input: this.search, componentRestrictions: {country: "CO"}}, predictions =>{
