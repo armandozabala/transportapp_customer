@@ -5,13 +5,14 @@ import { HttpClient } from  '@angular/common/http';
 
 import { auth} from 'firebase/app';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public http: HttpClient, public  afAuth:  AngularFireAuth, private router: Router, private googlePlus: GooglePlus) { }
+  constructor(public http: HttpClient, public  afAuth:  AngularFireAuth, private router: Router, private googlePlus: GooglePlus, private fb: Facebook) { }
 
 
   createUser(user: any){
@@ -29,6 +30,36 @@ export class AuthService {
         localStorage.removeItem('email');
     }
     return this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  loginFacebook(){
+
+    return this.fb.login(['public_profile','email'])
+      .then((res: FacebookLoginResponse) => {
+
+        console.log('Logged into Facebook!', res);
+
+
+        const credentials_fb = auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+
+        this.getUserDetail(res.authResponse.userID);
+
+        return this.afAuth.signInWithCredential(credentials_fb);
+
+      })
+      .catch(e => console.log('Error logging into Facebook', e));
+
+  }
+
+  getUserDetail(userid: any) {
+    return this.fb.api('/' + userid + '/?fields=id,email,name,picture', ['public_profile'])
+      .then(res => {
+        alert(JSON.stringify(res));
+      
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
 

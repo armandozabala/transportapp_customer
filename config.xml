@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.transportappclient.transportapp" version="2.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.transportappclient.transportapp" version="2.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Transportapp Customer</name>
     <description>App Transportapp.</description>
     <author email="armandozabala@gmail.com" href="http://armandozabala.com">AZ</author>
@@ -19,6 +19,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="android-targetSdkVersion" value="29" />
+    <preference name="android-minSdkVersion" value=" 22" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
@@ -245,13 +246,12 @@
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDw5Hm1y6CwPFFlDjT3aXXEdai9eTdFdXA" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB9XSUolOKHs8X72nRHU1vInmkGQWn3QDQ" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
-    <plugin name="cordova-plugin-googleplus" spec="^8.5.0">
-        <variable name="REVERSED_CLIENT_ID" value="com.transportappclient.transportapp" />
-        <variable name="WEB_APPLICATION_CLIENT_ID" value="656456418977-lrg8n5avnvs4onb3q6b1vistv74iglge.apps.googleusercontent.com" />
-        <variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
-    </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.4">
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="AIzaSyBcoKCwJkQ-MRbtj-DyANdxb6KnCaTErHg" />
         <variable name="OKHTTP_VERSION" value="3.12.0" />
+    </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="^8.5.0">
+        <variable name="REVERSED_CLIENT_ID" value="com.transportappclient.transportapp" />
+        <variable name="WEB_APPLICATION_CLIENT_ID" value="656456418977-eekib1dasi7gp6re402et3bqr5dmrhts.apps.googleusercontent.com" />
     </plugin>
 </widget>

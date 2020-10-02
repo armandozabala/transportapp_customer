@@ -21,6 +21,7 @@ import { HttpClientModule } from  '@angular/common/http';
 
 import { Network } from '@ionic-native/network/ngx';
 
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
@@ -38,6 +39,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
     HttpClientModule,
   ],
   providers: [
+    Facebook,
     GooglePlus,
     StatusBar,
     Network,

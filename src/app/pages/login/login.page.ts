@@ -166,6 +166,18 @@ export class LoginPage implements OnInit {
     
   }
 
+  loginFacebook(){
+     this.auth.loginFacebook().then((user:any) => {
+
+        console.log(user);
+
+        alert(user);
+
+     }).catch(err => {
+        swal.fire('Error...', "Wrong login with facebook", 'error');
+     });  
+  }
+
   loginGoogle(){
 
     //localStorage.removeItem('users');
