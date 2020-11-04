@@ -54,7 +54,11 @@ export class AuthService {
   getUserDetail(userid: any) {
     return this.fb.api('/' + userid + '/?fields=id,email,name,picture', ['public_profile'])
       .then(res => {
-        alert(JSON.stringify(res));
+        //alert(JSON.stringify(res));
+ 
+        localStorage.setItem('photo',res.picture.data.url);
+        localStorage.setItem('name',res.name);
+        localStorage.setItem('email',res.email)
       
       })
       .catch(e => {

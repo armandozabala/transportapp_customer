@@ -31,6 +31,8 @@ export class LoginPage implements OnInit {
   forma: FormGroup;
   loginform: FormGroup;
 
+  photo:any;
+
   constructor(public menu: MenuController, 
               private auth: AuthService, 
               private afs: FirestoreService, 
@@ -169,9 +171,12 @@ export class LoginPage implements OnInit {
   loginFacebook(){
      this.auth.loginFacebook().then((user:any) => {
 
-        console.log(user);
+        
 
-        alert(user);
+
+        this.router.navigate(['/requestorder']);
+
+   
 
      }).catch(err => {
         swal.fire('Error...', "Wrong login with facebook", 'error');

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   user:any;
+  photo:any;
   public selectedIndex = 0;
   public appPages = [
     {
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit {
     });
 
     this.user = JSON.parse(localStorage.getItem('users'));
+    this.photo = localStorage.getItem('photo');
 
   }
 

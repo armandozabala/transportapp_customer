@@ -5,7 +5,9 @@
         <ion-list id="inbox-list">
           <ion-list-header> 
           
-       
+
+        <img class="imgcircle" *ngIf="photo!=null" src="{{ photo  }}"> 
+
             <div class="menu" *ngIf="user!=null">
             
                   <img class="imgcircle" *ngIf="user!=null && user.photo!=null" src="{{ user.photo  }}"> 
